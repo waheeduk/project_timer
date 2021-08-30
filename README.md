@@ -18,4 +18,4 @@ The programme runs on python 3, and uses a few standard python modules.
 
 ## Licence
 
-The code is licensed under the [MIT License](LICENCE). 
+The code is licensed under the [MIT License](https://github.com/waheeduk/project_timer/blob/main/LICENSE). 
