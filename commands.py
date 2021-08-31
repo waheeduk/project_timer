@@ -1,3 +1,8 @@
+import datetime
+from pathlib import Path
+import json
+filename = "projects.json"
+
 def get_command():
 	command = input("What would you like to do?")
 	return command
@@ -7,21 +12,30 @@ def list_projects(project_list):
 	if len(project_list) == 0:
 		print("You don't have any projects right now.")
 	else:
-		print(projects)
+		for x, y in project_list.items():
+			print(f"Project Title: {x}")
+			hour = 0
+			min = 0
+			sec = 0
+			hour = y // (60 * 60)
+			min = y  // 60
+			sec = y % 60
+			sec = sec // 1
+			print(f"Time spent is: {hour} hours {min} minutes {sec} seconds.")
 
 def new_project(project_list):
 	name = input("What is the name of your project?")
 	project_list[str(name)] = 0
 
-def start_timer(project_name):
+def start_timer(project_list, project_name):
 	time_now = datetime.datetime.now()
 	detect_stop = input("Enter 'stop' to stop recording.\n")
 	if detect_stop == "stop":
 		time_finished = datetime.datetime.now()
 		total_time = time_finished - time_now
 		seconds = total_time.total_seconds()
-		projects[project_name] += seconds
-		json_object = json.dumps(projects, indent = 4)
+		project_list[project_name] += seconds
+		json_object = json.dumps(project_list, indent = 4)
 		with open(filename, 'w') as outfile:
 			outfile.write(json_object)
 

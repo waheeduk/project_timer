@@ -32,7 +32,7 @@ while (command != "quit" or "q"):
 	elif command == "start timer":
 		project_name = input("What is the name of your project?\n")
 		if project_name in projects:
-			start_timer(project_name)
+			start_timer(projects, project_name)
 			command = get_command()
 		else:
 			print(f"A project by that name was not found.\n")
