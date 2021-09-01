@@ -18,10 +18,10 @@ def list_projects(project_list):
 			min = 0
 			sec = 0
 			hour = y // (60 * 60)
-			min = y  // 60
-			sec = y % 60
+			min = (y - (hour * 3600)) // 60
+			sec = y - (hour*3600) -( min*60)
 			sec = sec // 1
-			print(f"Time spent is: {hour} hours {min} minutes {sec} seconds.")
+			print(f"Time spent is: {int(hour)} hours {int(min)} minutes and {int(sec)} seconds.")
 
 def new_project(project_list):
 	name = input("What is the name of your project?")
