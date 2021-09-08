@@ -39,6 +39,10 @@ while (command != "quit" or "q"):
 			command = get_command()
 	elif command == "quit" or command == "q":
 		quit()
+	elif command == "delete":
+		project_name = "What project would you like to delete?"
+		delete(projects, project_name)
+		command = get_command()
 	elif command == "clear":
 		clear_all()
 		command = get_command()

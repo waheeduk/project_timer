@@ -25,7 +25,11 @@ def list_projects(project_list):
 
 def new_project(project_list):
 	name = input("What is the name of your project?")
-	project_list[str(name)] = 0
+	while name not in project_list:
+		project_list[str(name)] = 0
+	else:
+		name = input("A project by that name already exists. Please pick \
+			another name.\n")
 
 def start_timer(project_list, project_name):
 	time_now = datetime.datetime.now()
@@ -39,6 +43,12 @@ def start_timer(project_list, project_name):
 		with open(filename, 'w') as outfile:
 			outfile.write(json_object)
 
+def delete(project_list, project_name):
+	if project_name in project_list:
+		del project_list[project_name]
+	else:
+		print(f"No project called {project_name} was found.")
+
 def clear_all():
 	filepath = Path("projects.json") 
 	if filepath.is_file():
@@ -51,4 +61,4 @@ def quit():
 
 commands = ["list -- list all current projects", "new -- create a new project", \
 "start timer -- start a timer for a currently listed project", "clear -- delete all projects",\
-"quit -- exit the programme"]
+"delete -- delete a project", "quit -- exit the programme"]
